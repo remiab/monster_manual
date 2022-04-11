@@ -61,12 +61,24 @@ def view_monster_list():
 def add_creature():
     dictionary = load_manual(manual)
     creature_info = {}
-    creature_info["name"] = input("Name: ")
+    creature_name = input("Name: ")
+    creature_info["name"] = creature_name.strip().capitalize()
     creature_info["ac"] = input("Armour Class: ")
     creature_info["hp"] = input("Hit Points: ")
     creature_info["cr"] = input("Challenge Rating: ")
+    creature_size = input("Size: ")
+    creature_info["size"] = creature_size.strip().capitalize()
+    print("\nSelect creature type:")
+    creature_type = ["aberration", "beast", "construct", "humanoid", "monstrosity", "plant", "undead"]
+    for i, type in enumerate(creature_type):
+        i = i + 1
+        print(str(i) + ":" + str(type))
+    type_selection = input("Enter number: ")
+    type_selection = int(type_selection) -1
+    creature_info["type"] = creature_type[type_selection]
     dictionary.append(creature_info)
     update_manual(manual, dictionary)
+    print("Creature successfully added to manual")
 
 def further_edit(index_number):
     while True:
@@ -87,13 +99,14 @@ def further_edit(index_number):
 def add_stat(index_number):
     new_stat_options()
     new_stat_choice = input("Enter Number: ")
-    dictionary = load_manual(manual)
-    new_stat_name = str(input("Enter new stat name: "))
-    new_stat_name = new_stat_name.strip()
-    new_stat_value = str(input("Enter new stat value: "))
-    new_stat_value = new_stat_value.strip()
-    dictionary[index_number][new_stat_name] = new_stat_value
-    update_manual(manual, dictionary)
+    if new_stat_choice == "5":
+        dictionary = load_manual(manual)
+        new_stat_name = str(input("Enter new stat name: "))
+        new_stat_name = new_stat_name.strip()
+        new_stat_value = str(input("Enter new stat value: "))
+        new_stat_value = new_stat_value.strip()
+        dictionary[index_number][new_stat_name] = new_stat_value
+        update_manual(manual, dictionary)
 
 
 def edit_stat(index_number, stat_choice):
