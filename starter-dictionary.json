@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Kobold",
+        "ac": "12",
+        "hp": "7",
+        "cr": "1/8",
+        "Size": "Small"
+    },
+    {
+        "name": "Purple Worm",
+        "ac": "18",
+        "hp": "248",
+        "cr": "15"
+    },
+    {
+        "name": "Skeleton",
+        "ac": "13",
+        "hp": "14",
+        "cr": "1/4"
+    },
+    {
+        "name": "Mimic",
+        "ac": "12",
+        "hp": "59",
+        "cr": "3.1"
+    },
+    {
+        "name": "Basilisk",
+        "ac": "15",
+        "hp": "52",
+        "cr": "3"
+    }
+]
