@@ -4,11 +4,12 @@ from turtle import update
 
 def Options():
     print("Welcome to Our Kinda Sorta Monster Manual \n")
-    print("(1)  View Manual")
-    print("(2)  Add Creature")
-    print("(3)  Edit Creature")
-    print("(4)  Remove Creature")
-    print("(5)  Exit")
+    print("(1)  View Creature List")
+    print("(2)  View Creature Stat Block")
+    print("(3)  Add Creature")
+    print("(4)  Edit Creature")
+    print("(5)  Remove Creature")
+    print("(6)  Exit")
 
 def edit_options():
     print("(1) Edit name")
@@ -36,27 +37,40 @@ def update_manual(file_name, update):
 
 def view_manual(manual):
     dictionary = load_manual(manual)
-    i = 0
+    i = 1
     for entry in dictionary:
+            name = entry["name"]
+            print(f"{i}: {name}")
+            i=i+1
+
+def view_stat_block(index_number):
+     dictionary = load_manual(manual)
+     i=0
+     for entry in dictionary:
+        if i == index_number:
             name = entry["name"]
             ac = entry["ac"]
             hp = entry["hp"]
             cr = entry["cr"]
-            print(f"Index Number: {i}")
-            print(f"{name}")
-            print(f"Armour Class: {ac}")
-            print(f"Hit Points: {hp}")
-            print(f"Challenge Rating: {cr}")
-            print("\n")
+            print(f"""Current Stat Block: 
+                Name: {name} 
+                Armour Class: {ac} 
+                Hit Points: {hp}
+                Challenge Rating: {cr} 
+            \n""")
+            i=i+1
+        else:
+            pass
             i=i+1
 
-def view_monster_list():
+def select_creature_to_view():
+    view_manual(manual)
     dictionary = load_manual(manual)
-    i = 0
-    for entry in dictionary:
-        name = entry["name"]
-        print(f"({i}) {name}")
-        i=i+1
+    data_length = len(dictionary)
+    print("\nWhich creature would you like to view?")
+    creature_option = input(f"Enter Number (1-{data_length}): ")
+    creature_option = int(creature_option) -1
+    view_stat_block(creature_option)
 
 def add_creature():
     dictionary = load_manual(manual)
@@ -165,22 +179,22 @@ def edit_creature(index_number):
             i = i+1
 
 def select_creature_to_edit():
-    view_monster_list()
+    view_manual(manual)
     dictionary = load_manual(manual)
-    data_length = len(dictionary)-1
+    data_length = len(dictionary)
     print("\nWhich creature would you like to edit?")
-    creature_option = input(f"Enter Index Number (0-{data_length}): ")
-    creature_option = int(creature_option)
+    creature_option = input(f"Enter Number (1-{data_length}): ")
+    creature_option = int(creature_option) -1
     edit_creature(creature_option)
 
 def remove_creature():
-    view_monster_list()
+    view_manual(manual)
     dictionary = load_manual(manual)
     new_data = []
-    data_length = len(dictionary)-1
+    data_length = len(dictionary)
     print("\nWhich creature would you like to remove?")
-    delete_option = input(f"Enter index number (0 - {data_length}): ")
-    i=0
+    delete_option = input(f"Enter Number (1 - {data_length}): ")
+    i=1
     for entry in dictionary:
         if i == int(delete_option):
             pass
@@ -189,6 +203,7 @@ def remove_creature():
             new_data.append(entry)
             i=i+1
     update_manual(manual, new_data)
+    print("Creature removed from manual")
 
 
 manual = "starter-dictionary.json"
@@ -199,12 +214,14 @@ while True:
     if option == "1":
         view_manual(manual)
     elif option == "2":
-        add_creature()
+        select_creature_to_view()
     elif option == "3":
-        select_creature_to_edit()
+        add_creature()
     elif option == "4":
-        remove_creature()
+        select_creature_to_edit()
     elif option == "5":
+        remove_creature()
+    elif option == "6":
         break
     else:
         input("Please choose an option: ")
