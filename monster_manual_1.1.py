@@ -8,13 +8,6 @@ def start_menu():
     print("(3) Add Creature")
     print("(4) Exit")
 
-def new_stat_options():
-    print("(1) Action")
-    print("(2) Damage Vulnerabilities/Resistances")
-    print("(3) Senses")
-    print("(4) Special feature")
-    print("(5) Other")
-
 def load_manual(file):
     with open(file, "r") as f:
         dictionary = json.load(f)
@@ -57,7 +50,7 @@ def add_damage(actions, action, aspect, damage):
     damage_type_and_value = {damage_to_add: damage_type_to_add}
     damage.append(damage_type_and_value)
     action[aspect] = damage
-    additional_damage_type = input("add additional damage type? Y/N")
+    additional_damage_type = input("add additional damage type? Y/N: ")
     additional_damage_type = additional_damage_type.strip().lower()
     if additional_damage_type == "y":
         add_damage(actions, action, aspect, damage)
@@ -74,7 +67,54 @@ def add_weapon_attack(actions, action):
             add_damage(actions, action, aspect, damage)
 
 def add_spell_action(actions, action):
-    pass
+    spell_book = {}
+    spell_name = input("Enter spell name: ")
+    spell_name = spell_name.strip().lower()
+    if spell_name in spell_book:
+        print(spell_name)
+    else:
+        action["name"] = spell_name
+        action_aspects = ["saving throw or attack roll", "range/reach(ft)", "damage", "description"]
+        for aspect in action_aspects:
+            if aspect == "saving throw or attack roll":
+                st_atk = ["saving throw", "attack roll"]
+                for i, type in enumerate(st_atk):
+                    i=i+1
+                    print(f"({i}): {type}")
+                spell_type = input("Enter number: ")
+                spell_type = int(spell_type) - 1
+                if spell_type == 0:
+                    saving_throw_skill = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+                    for s, skill in enumerate(saving_throw_skill):
+                        s = s + 1
+                        print(f"({s}): {skill}")
+                        s = s + 1
+                    entered_skill = input("Enter number: ")
+                    entered_skill = int(entered_skill) - 1
+                    entered_skill = saving_throw_skill[entered_skill]
+                    throw_dc = input("Enter throw DC: ")
+                    damage_reduction_options = ["halved", "no damage"]
+                    action["saving throw"] = {entered_skill: throw_dc}
+                    for d, option in enumerate(damage_reduction_options):
+                        d = d + 1
+                        print(f"({d}): {option}")
+                        d = d + 1
+                        damage_reduction = input("Enter number: ")
+                    damage_reduction = int(damage_reduction) - 1
+                    action["damage on successful saving throw"] = damage_reduction_options[damage_reduction]
+                elif spell_type == 1:
+                    action["to hit"] = input("Enter to hit: ")
+                action[aspect] = st_atk[spell_type]
+            elif aspect == "range/reach(ft)":
+                action[aspect] = input(f"Enter {aspect}: ")
+            elif aspect == "description":
+                desc_query = input("Add spell description? Y/N: ")
+                desc_query = desc_query.strip().lower()
+                if desc_query == "y":
+                    action[aspect] = input(f"Enter {aspect}: ")
+            else:
+                damage = []
+                add_damage(actions, action, aspect, damage)
 
 def add_other_action(actions, action):
     action_name = input("Enter action name: ")
@@ -114,7 +154,6 @@ def action_count(creature, stat):
     actions = []
     add_actions(creature, stat, actions)
 
-
 def add_additional_stat(creature, stat):
     stat_categories = ["actions", "damage v/r", "senses", "special feature", "other"]
     stat_category = stat_categories[stat]
@@ -125,8 +164,11 @@ def more_stats_query(new_creature_key):
     more_stats = input("Would you like to add more stats to this creature? Y/N: ")
     more_stats = str(more_stats).strip().lower()
     if more_stats == "y":
-        new_stat_options()
-        stat_choice = input("Enter number to add stat: ")
+        new_stat_options = ["Action", "Damage Vulnerabilities/Resistances", "Senses", "Special feature", "Other"]
+        for i, option in enumerate(new_stat_options):
+            i=i+1
+            print(f"({i}): {option}")
+        stat_choice = input("Enter number: ")
         stat_choice = int(stat_choice) - 1
         add_additional_stat(new_creature_key, stat_choice)
 
@@ -136,6 +178,7 @@ def add_creature():
     new_creature_key = new_creature_name.strip().lower()
     dictionary[new_creature_key] = {}
     new_creature_name = new_creature_key.capitalize()
+    dictionary[new_creature_key]["name"] = new_creature_name
     core_stats = ["ac", "hp", "cr", "size", "type"]
     for stat in core_stats:
         dictionary[new_creature_key][stat] = input(f"Enter {stat}: ")
