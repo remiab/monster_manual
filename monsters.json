@@ -474,5 +474,25 @@
                 ]
             }
         ]
+    },
+    "fomorian": {
+        "ac": "14",
+        "hp": "149",
+        "cr": "8",
+        "size": "huge",
+        "type": "giant",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "greatclub",
+                "to hit": "+9",
+                "range/reach(ft)": "15",
+                "damage": [
+                    {
+                        "3d8+6": "bludgeoning"
+                    }
+                ]
+            }
+        ]
     }
 }

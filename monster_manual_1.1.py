@@ -42,11 +42,10 @@ def view_creature_list():
         i=i+1
 
 def retrieve_stat(creature, key):
-    if key in creature:
-        key_name = str(key).upper()
-        stat_name = creature.get(key)
-        stat_name = str(stat_name).capitalize()
-        print(f"{key_name}: {stat_name}")
+    key_name = str(key).upper()
+    stat_name = creature.get(key)
+    stat_name = str(stat_name).capitalize()
+    print(f"{key_name}: {stat_name}")
 
 def view_creature():
     dictionary = load_manual(manual)
@@ -54,14 +53,9 @@ def view_creature():
     creature = creature.strip().lower()
     if creature in dictionary:
         creature = dictionary.get(creature)
-        retrieve_stat(creature, "name")
-        retrieve_stat(creature, "ac")
-        retrieve_stat(creature, "hp")
-        retrieve_stat(creature, "cr")
-        retrieve_stat(creature, "size")
-        retrieve_stat(creature, "type")
-        retrieve_stat(creature, "action")
-        retrieve_stat(creature, "damage v/r")
+        key_list = creature.keys()
+        for key in key_list:
+            retrieve_stat(creature, key)
     else:
         print(f"sorry, can't find {creature}")
 
