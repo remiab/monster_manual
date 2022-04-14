@@ -15,14 +15,6 @@ def new_stat_options():
     print("(4) Special feature")
     print("(5) Other")
 
-def attack_type_options():
-    print("Action type:")
-    print("(1) Melee weapon attack")
-    print("(2) Ranged weapon attack")
-    print("(3) Melee spell attack")
-    print("(4) Ranged spell attack")
-    print("(5) N/A")
-
 def load_manual(file):
     with open(file, "r") as f:
         dictionary = json.load(f)
@@ -72,26 +64,46 @@ def add_damage(actions, action, aspect, damage):
     else:
         actions.append(action)
 
+def add_weapon_attack(actions, action):
+    action_aspects = ["name", "to hit","range/reach(ft)", "damage"]
+    for aspect in action_aspects:
+        if aspect != "damage":
+            action[aspect] = input(f"Enter {aspect}: ")
+        else:
+            damage = []
+            add_damage(actions, action, aspect, damage)
+
+def add_spell_action(actions, action):
+    pass
+
+def add_other_action(actions, action):
+    action_name = input("Enter action name: ")
+    action_description = input("Enter action description: ")
+    action[action_name] = action_description
+    actions.append(action)
+
 def add_actions(creature, stat, actions):
     dictionary = load_manual(manual)
     dictionary[creature][stat] = {}
     action = {}
-    attack_type_options()
-    attack_types = ["Melee weapon attack", "Ranged weapon attack", "Melee spell attack", "Ranged spell attack"]
+    attack_types = ["Melee weapon attack", "Ranged weapon attack", "Melee spell attack", "Ranged spell attack", "N/A"]
+    for i, type in enumerate(attack_types):
+        i=i+1
+        print(f"({i}): {type}")
+        i=i+1
     attack_type = input("Enter number: ")
     attack_type = int(attack_type) - 1
     if attack_type < 2:
         action["type"] = attack_types[attack_type]
-        action_aspects = ["name", "to hit","range/reach(ft)", "damage"]
-        for aspect in action_aspects:
-            if aspect != "damage":
-                action[aspect] = input(f"Enter {aspect}: ")
-            else:
-                damage = []
-                add_damage(actions, action, aspect, damage)
+        add_weapon_attack(actions, action)
+    elif attack_type >=2 and attack_type < 4:
+        action["type"] = attack_types[attack_type]
+        add_spell_action(actions, action)
+    else:
+        add_other_action(actions, action)  
     dictionary[creature][stat]= actions
     update_manual(manual, dictionary)
-    another_action = input("Would you like to add another action? Y/N")
+    another_action = input("Would you like to add another action? Y/N: ")
     another_action = another_action.strip().lower()
     if another_action == "y":
         add_actions(creature, stat, actions)

@@ -1,498 +1,558 @@
 {
-    "kobold": {
-        "name": "Kobold",
-        "ac": "12",
-        "hp": "7",
-        "cr": "1/8",
-        "size": "small"
-    },
-    "purple worm": {
-        "name": "Purple Worm",
-        "ac": "18",
-        "hp": "248",
-        "cr": "15"
-    },
-    "skeleton": {
-        "name": "Skeleton",
-        "ac": "13",
-        "hp": "14",
-        "cr": "1/4"
-    },
-    "mimic": {
-        "name": "Mimic",
-        "ac": "12",
-        "hp": "58",
-        "cr": "3"
-    },
-    "basilisk": {
-        "name": "Basilisk",
-        "ac": "15",
-        "hp": "52",
-        "cr": "3",
-        "size": "medium",
-        "type": "monstrosity"
-    },
-    "wolf": {
-        "name": "Wolf",
-        "ac": "13",
-        "hp": "11",
-        "cr": "1/4",
-        "size": "medium",
-        "type": "beast"
-    },
-    "aboleth": {
-        "name": "Aboleth",
-        "ac": "17",
-        "hp": "135",
-        "cr": "10",
-        "size": "large",
-        "type": "aberration"
-    },
-    "rug of smothering": {
-        "name": "Rug of smothering",
-        "ac": "12",
-        "hp": "33",
-        "cr": "2",
-        "size": "large",
-        "type": "construct"
-    },
-    "worg": {
-        "name": "Worg",
-        "ac": "13",
-        "hp": "26",
-        "cr": "1/2",
-        "size": "large",
-        "type": "monstrosity"
-    },
-    "ankheg": {
-        "name": "Ankheg",
-        "ac": "14",
-        "hp": "39",
-        "cr": "2",
-        "size": "large",
-        "type": "monstrosity"
-    },
-    "behir": {
-        "name": "Behir",
-        "ac": "17",
-        "hp": "168",
-        "cr": "11",
-        "size": "huge",
-        "type": "monstrosity"
-    },
-    "beholder": {
-        "name": "Beholder",
-        "ac": "18",
-        "hp": "180",
-        "cr": "13",
-        "size": "large",
-        "type": "aberration"
-    },
-    "death tyrant": {
-        "name": "Death tyrant",
-        "ac": "19",
-        "hp": "187",
-        "cr": "14",
-        "size": "large",
-        "type": "undead"
-    },
-    "spectator": {
-        "name": "Spectator",
-        "ac": "14",
-        "hp": "39",
-        "cr": "3",
-        "size": "medium",
-        "type": "aberration"
-    },
-    "needle blight": {
-        "name": "Needle blight",
-        "ac": "12",
-        "hp": "11",
-        "cr": "1/4",
-        "size": "medium",
-        "type": "plant"
-    },
-    "twig blight": {
-        "name": "Twig blight",
-        "ac": "13",
-        "hp": "4",
-        "cr": "1/8",
-        "size": "small",
-        "type": "plant",
-        "action": {
-            "action type": "Melee weapon attack"
-        }
-    },
-    "vine blight": {
-        "name": "Vine blight",
-        "ac": "12",
-        "hp": "26",
-        "cr": "1/2",
-        "size": "medium",
-        "type": "plant",
-        "action": {
-            "action type": "Melee weapon attack",
-            "action": "Constrict"
-        }
-    },
-    "bugbear": {
-        "name": "Bugbear",
-        "ac": "16",
-        "hp": "27",
-        "cr": "1",
-        "size": "medium",
-        "type": "humanoid"
-    },
-    "bugbear chief": {
-        "name": "Bugbear chief",
-        "ac": "17",
-        "hp": "65",
-        "cr": "3",
-        "size": "medium",
-        "type": "humanoid"
-    },
-    "bulette": {
-        "name": "Bulette",
-        "ac": "17",
-        "hp": "94",
-        "cr": "5",
-        "size": "large",
-        "type": "monstrosity"
-    },
-    "bullywug": {
-        "name": "Bullywug",
-        "ac": "15",
-        "hp": "11",
-        "cr": "1/4",
-        "size": "medium",
-        "type": "humanoid"
-    },
-    "cambion": {
-        "name": "Cambion",
-        "ac": "19",
-        "hp": "82",
-        "cr": "5",
-        "size": "medium",
-        "type": "fiend",
-        "action": {
-            "action type": "Ranged spell attack",
-            "action": "Fire ray"
-        }
-    },
-    "carrion crawler": {
-        "name": "Carrion crawler",
-        "ac": "13",
-        "hp": "51",
-        "cr": "2",
-        "size": "large",
-        "type": "monstrosity"
-    },
-    "centaur": {
-        "name": "Centaur",
-        "ac": "12",
-        "hp": "45",
-        "cr": "2",
-        "size": "large",
-        "type": "monstrosity"
-    },
-    "chimera": {
-        "name": "Chimera",
-        "ac": "14",
-        "hp": "114",
-        "cr": "6",
-        "size": "large",
-        "type": "monstrosity"
-    },
-    "chuul": {
-        "name": "Chuul",
-        "ac": "16",
-        "hp": "93",
-        "cr": "4",
-        "size": "large",
-        "type": "aberration"
-    },
-    "cloaker": {
-        "name": "Cloaker",
-        "ac": "14",
-        "hp": "78",
-        "cr": "8",
-        "size": "large",
-        "type": "aberration"
-    },
-    "cockatrice": {
-        "name": "Cockatrice",
-        "ac": "11",
-        "hp": "27",
-        "cr": "1/2",
-        "size": "small",
-        "type": "monstrosity",
-        "action": {
-            "1": {
-                "action type": "Melee weapon attack",
-                "action": "Bite"
-            }
-        }
-    },
-    "couatl": {
-        "name": "Couatl",
-        "ac": "19",
-        "hp": "97",
-        "cr": "4",
-        "size": "medium",
-        "type": "celestial",
-        "actions": {
-            "1": {
-                "action type": "Melee weapon attack",
-                "action": "Bite"
-            }
-        }
-    },
-    "cyclops": {
-        "name": "Cyclops",
-        "ac": "14",
-        "hp": "138",
-        "cr": "6",
-        "size": "huge",
-        "type": "giant",
-        "actions": [
-            {
-                "type": "Melee weapon attack",
-                "action": "Greatclub",
-                "damage": "3d8+6"
-            },
-            {
-                "type": "Ranged weapon attack",
-                "action": "Rock",
-                "damage": "4d10+6"
-            }
-        ]
-    },
-    "balor": {
-        "name": "Balor",
-        "ac": "19",
-        "hp": "262",
-        "cr": "19",
-        "size": "huge",
-        "type": "fiend (demon)"
-    },
-    "doppelganger": {
-        "name": "Doppelganger",
-        "ac": "14",
-        "hp": "52",
-        "cr": "3",
-        "size": "medium",
-        "type": "monstrosity"
-    },
-    "dragon turtle": {
-        "name": "Dragon turtle",
-        "ac": "20",
-        "hp": "341",
-        "cr": "17",
-        "size": "gargantuan",
-        "type": "dragon"
-    },
-    "drider": {
-        "name": "Drider",
-        "ac": "19",
-        "hp": "123",
-        "cr": "6",
-        "size": "large",
-        "type": "monstrosity"
-    },
-    "dryad": {
-        "name": "Dryad",
-        "ac": "11",
-        "hp": "22",
-        "cr": "1",
-        "size": "medium",
-        "type": "fey"
-    },
-    "duergar": {
-        "name": "Duergar",
-        "ac": "16",
-        "hp": "26",
-        "cr": "1",
-        "size": "medium",
-        "type": "humanoid"
-    },
-    "air elemental": {
-        "name": "Air elemental",
-        "ac": "15",
-        "hp": "90",
-        "cr": "5",
-        "size": "large",
-        "type": "elemental",
-        "actions": [
-            {
-                "type": "Melee weapon attack",
-                "name": "slam",
-                "to hit": "+8",
-                "range/reach(ft)": "5",
-                "damage": "2d8+5",
-                "damage type": "bludgeoning"
-            }
-        ]
-    },
-    "drow": {
-        "name": "Drow",
-        "ac": "15",
-        "hp": "13",
-        "cr": "1/4",
-        "size": "medium",
-        "type": "humanoid",
-        "actions": [
-            {
-                "type": "Melee weapon attack",
-                "name": "shortsword",
-                "to hit": "+4",
-                "range/reach(ft)": "5",
-                "damage": "1d6+2",
-                "damage type": "piercing"
-            },
-            {
-                "type": "Ranged weapon attack",
-                "name": "hand crossbow",
-                "to hit": "+4",
-                "range/reach(ft)": "30/120",
-                "damage": "1d6+2",
-                "damage type": "piercing"
-            }
-        ]
-    },
-    "drow mage": {
-        "name": "Drow mage",
-        "ac": "12",
-        "hp": "45",
-        "cr": "7",
-        "size": "medium",
-        "type": "humanoid",
-        "actions": [
-            {
-                "type": "Melee weapon attack",
-                "name": "staff",
-                "to hit": "+2",
-                "range/reach(ft)": "5",
-                "damage": [
-                    [
-                        "1d6-1",
-                        "bludgeoning"
-                    ]
-                ]
-            }
-        ]
-    },
-    "drow elite warrior": {
-        "name": "Drow elite warrior",
-        "ac": "18",
-        "hp": "71",
-        "cr": "5",
-        "size": "medium",
-        "type": "humanoid",
-        "actions": [
-            {
-                "type": "Melee weapon attack",
-                "name": "shortsword",
-                "to hit": "+7",
-                "range/reach(ft)": "10",
-                "damage": [
-                    {
-                        "1d6+4": "piercing"
-                    },
-                    {
-                        "3d8": "poison"
-                    }
-                ]
-            },
-            {
-                "type": "Ranged weapon attack",
-                "name": "hand crossbow",
-                "to hit": "+7",
-                "range/reach(ft)": "30/120",
-                "damage": [
-                    {
-                        "1d6+4": "piercing"
-                    },
-                    {
-                        "3d8": "poison"
-                    }
-                ]
-            }
-        ]
-    },
-    "ettin": {
-        "name": "Ettin",
-        "ac": "12",
-        "hp": "85",
-        "cr": "4",
-        "size": "large",
-        "type": "giant",
-        "actions": [
-            {
-                "type": "Melee weapon attack",
-                "name": "battleaxe",
-                "to hit": "+7",
-                "range/reach(ft)": "5",
-                "damage": [
-                    {
-                        "2d8+5": "slashing"
-                    }
-                ]
-            },
-            {
-                "type": "Melee weapon attack",
-                "name": "morningstar",
-                "to hit": "+7",
-                "range/reach(ft)": "5",
-                "damage": [
-                    {
-                        "2d8+5": "piercing"
-                    }
-                ]
-            }
-        ]
-    },
-    "flumph": {
-        "name": "Flumph",
-        "ac": "12",
-        "hp": "7",
-        "cr": "1/8",
-        "size": "small",
-        "type": "aberration",
-        "actions": [
-            {
-                "type": "Melee weapon attack",
-                "name": "tendrils",
-                "to hit": "+4",
-                "range/reach(ft)": "5",
-                "damage": [
-                    {
-                        "1d4+2": "piercing"
-                    },
-                    {
-                        "1d4": "acid"
-                    }
-                ]
-            }
-        ]
-    },
-    "fomorian": {
-        "ac": "14",
-        "hp": "149",
-        "cr": "8",
-        "size": "huge",
-        "type": "giant",
-        "actions": [
-            {
-                "type": "Melee weapon attack",
-                "name": "greatclub",
-                "to hit": "+9",
-                "range/reach(ft)": "15",
-                "damage": [
-                    {
-                        "3d8+6": "bludgeoning"
-                    }
-                ]
-            }
-        ]
+  "kobold": {
+    "name": "Kobold",
+    "ac": "12",
+    "hp": "7",
+    "cr": "1/8",
+    "size": "small"
+  },
+  "purple worm": {
+    "name": "Purple Worm",
+    "ac": "18",
+    "hp": "248",
+    "cr": "15"
+  },
+  "skeleton": {
+    "name": "Skeleton",
+    "ac": "13",
+    "hp": "14",
+    "cr": "1/4"
+  },
+  "mimic": {
+    "name": "Mimic",
+    "ac": "12",
+    "hp": "58",
+    "cr": "3"
+  },
+  "basilisk": {
+    "name": "Basilisk",
+    "ac": "15",
+    "hp": "52",
+    "cr": "3",
+    "size": "medium",
+    "type": "monstrosity"
+  },
+  "wolf": {
+    "name": "Wolf",
+    "ac": "13",
+    "hp": "11",
+    "cr": "1/4",
+    "size": "medium",
+    "type": "beast"
+  },
+  "aboleth": {
+    "name": "Aboleth",
+    "ac": "17",
+    "hp": "135",
+    "cr": "10",
+    "size": "large",
+    "type": "aberration"
+  },
+  "rug of smothering": {
+    "name": "Rug of smothering",
+    "ac": "12",
+    "hp": "33",
+    "cr": "2",
+    "size": "large",
+    "type": "construct"
+  },
+  "worg": {
+    "name": "Worg",
+    "ac": "13",
+    "hp": "26",
+    "cr": "1/2",
+    "size": "large",
+    "type": "monstrosity"
+  },
+  "ankheg": {
+    "name": "Ankheg",
+    "ac": "14",
+    "hp": "39",
+    "cr": "2",
+    "size": "large",
+    "type": "monstrosity"
+  },
+  "behir": {
+    "name": "Behir",
+    "ac": "17",
+    "hp": "168",
+    "cr": "11",
+    "size": "huge",
+    "type": "monstrosity"
+  },
+  "beholder": {
+    "name": "Beholder",
+    "ac": "18",
+    "hp": "180",
+    "cr": "13",
+    "size": "large",
+    "type": "aberration"
+  },
+  "death tyrant": {
+    "name": "Death tyrant",
+    "ac": "19",
+    "hp": "187",
+    "cr": "14",
+    "size": "large",
+    "type": "undead"
+  },
+  "spectator": {
+    "name": "Spectator",
+    "ac": "14",
+    "hp": "39",
+    "cr": "3",
+    "size": "medium",
+    "type": "aberration"
+  },
+  "needle blight": {
+    "name": "Needle blight",
+    "ac": "12",
+    "hp": "11",
+    "cr": "1/4",
+    "size": "medium",
+    "type": "plant"
+  },
+  "twig blight": {
+    "name": "Twig blight",
+    "ac": "13",
+    "hp": "4",
+    "cr": "1/8",
+    "size": "small",
+    "type": "plant",
+    "action": {
+      "action type": "Melee weapon attack"
     }
+  },
+  "vine blight": {
+    "name": "Vine blight",
+    "ac": "12",
+    "hp": "26",
+    "cr": "1/2",
+    "size": "medium",
+    "type": "plant",
+    "action": {
+      "action type": "Melee weapon attack",
+      "action": "Constrict"
+    }
+  },
+  "bugbear": {
+    "name": "Bugbear",
+    "ac": "16",
+    "hp": "27",
+    "cr": "1",
+    "size": "medium",
+    "type": "humanoid"
+  },
+  "bugbear chief": {
+    "name": "Bugbear chief",
+    "ac": "17",
+    "hp": "65",
+    "cr": "3",
+    "size": "medium",
+    "type": "humanoid"
+  },
+  "bulette": {
+    "name": "Bulette",
+    "ac": "17",
+    "hp": "94",
+    "cr": "5",
+    "size": "large",
+    "type": "monstrosity"
+  },
+  "bullywug": {
+    "name": "Bullywug",
+    "ac": "15",
+    "hp": "11",
+    "cr": "1/4",
+    "size": "medium",
+    "type": "humanoid"
+  },
+  "cambion": {
+    "name": "Cambion",
+    "ac": "19",
+    "hp": "82",
+    "cr": "5",
+    "size": "medium",
+    "type": "fiend",
+    "action": {
+      "action type": "Ranged spell attack",
+      "action": "Fire ray"
+    }
+  },
+  "carrion crawler": {
+    "name": "Carrion crawler",
+    "ac": "13",
+    "hp": "51",
+    "cr": "2",
+    "size": "large",
+    "type": "monstrosity"
+  },
+  "centaur": {
+    "name": "Centaur",
+    "ac": "12",
+    "hp": "45",
+    "cr": "2",
+    "size": "large",
+    "type": "monstrosity"
+  },
+  "chimera": {
+    "name": "Chimera",
+    "ac": "14",
+    "hp": "114",
+    "cr": "6",
+    "size": "large",
+    "type": "monstrosity"
+  },
+  "chuul": {
+    "name": "Chuul",
+    "ac": "16",
+    "hp": "93",
+    "cr": "4",
+    "size": "large",
+    "type": "aberration"
+  },
+  "cloaker": {
+    "name": "Cloaker",
+    "ac": "14",
+    "hp": "78",
+    "cr": "8",
+    "size": "large",
+    "type": "aberration"
+  },
+  "cockatrice": {
+    "name": "Cockatrice",
+    "ac": "11",
+    "hp": "27",
+    "cr": "1/2",
+    "size": "small",
+    "type": "monstrosity",
+    "action": {
+      "1": {
+        "action type": "Melee weapon attack",
+        "action": "Bite"
+      }
+    }
+  },
+  "couatl": {
+    "name": "Couatl",
+    "ac": "19",
+    "hp": "97",
+    "cr": "4",
+    "size": "medium",
+    "type": "celestial",
+    "actions": {
+      "1": {
+        "action type": "Melee weapon attack",
+        "action": "Bite"
+      }
+    }
+  },
+  "cyclops": {
+    "name": "Cyclops",
+    "ac": "14",
+    "hp": "138",
+    "cr": "6",
+    "size": "huge",
+    "type": "giant",
+    "actions": [
+      {
+        "type": "Melee weapon attack",
+        "action": "Greatclub",
+        "damage": "3d8+6"
+      },
+      {
+        "type": "Ranged weapon attack",
+        "action": "Rock",
+        "damage": "4d10+6"
+      }
+    ]
+  },
+  "balor": {
+    "name": "Balor",
+    "ac": "19",
+    "hp": "262",
+    "cr": "19",
+    "size": "huge",
+    "type": "fiend (demon)"
+  },
+  "doppelganger": {
+    "name": "Doppelganger",
+    "ac": "14",
+    "hp": "52",
+    "cr": "3",
+    "size": "medium",
+    "type": "monstrosity"
+  },
+  "dragon turtle": {
+    "name": "Dragon turtle",
+    "ac": "20",
+    "hp": "341",
+    "cr": "17",
+    "size": "gargantuan",
+    "type": "dragon"
+  },
+  "drider": {
+    "name": "Drider",
+    "ac": "19",
+    "hp": "123",
+    "cr": "6",
+    "size": "large",
+    "type": "monstrosity"
+  },
+  "dryad": {
+    "name": "Dryad",
+    "ac": "11",
+    "hp": "22",
+    "cr": "1",
+    "size": "medium",
+    "type": "fey"
+  },
+  "duergar": {
+    "name": "Duergar",
+    "ac": "16",
+    "hp": "26",
+    "cr": "1",
+    "size": "medium",
+    "type": "humanoid"
+  },
+  "air elemental": {
+    "name": "Air elemental",
+    "ac": "15",
+    "hp": "90",
+    "cr": "5",
+    "size": "large",
+    "type": "elemental",
+    "actions": [
+      {
+        "type": "Melee weapon attack",
+        "name": "slam",
+        "to hit": "+8",
+        "range/reach(ft)": "5",
+        "damage": "2d8+5",
+        "damage type": "bludgeoning"
+      }
+    ]
+  },
+  "drow": {
+    "name": "Drow",
+    "ac": "15",
+    "hp": "13",
+    "cr": "1/4",
+    "size": "medium",
+    "type": "humanoid",
+    "actions": [
+      {
+        "type": "Melee weapon attack",
+        "name": "shortsword",
+        "to hit": "+4",
+        "range/reach(ft)": "5",
+        "damage": "1d6+2",
+        "damage type": "piercing"
+      },
+      {
+        "type": "Ranged weapon attack",
+        "name": "hand crossbow",
+        "to hit": "+4",
+        "range/reach(ft)": "30/120",
+        "damage": "1d6+2",
+        "damage type": "piercing"
+      }
+    ]
+  },
+  "drow mage": {
+    "name": "Drow mage",
+    "ac": "12",
+    "hp": "45",
+    "cr": "7",
+    "size": "medium",
+    "type": "humanoid",
+    "actions": [
+      {
+        "type": "Melee weapon attack",
+        "name": "staff",
+        "to hit": "+2",
+        "range/reach(ft)": "5",
+        "damage": [["1d6-1", "bludgeoning"]]
+      }
+    ]
+  },
+  "drow elite warrior": {
+    "name": "Drow elite warrior",
+    "ac": "18",
+    "hp": "71",
+    "cr": "5",
+    "size": "medium",
+    "type": "humanoid",
+    "actions": [
+      {
+        "type": "Melee weapon attack",
+        "name": "shortsword",
+        "to hit": "+7",
+        "range/reach(ft)": "10",
+        "damage": [
+          {
+            "1d6+4": "piercing"
+          },
+          {
+            "3d8": "poison"
+          }
+        ]
+      },
+      {
+        "type": "Ranged weapon attack",
+        "name": "hand crossbow",
+        "to hit": "+7",
+        "range/reach(ft)": "30/120",
+        "damage": [
+          {
+            "1d6+4": "piercing"
+          },
+          {
+            "3d8": "poison"
+          }
+        ]
+      }
+    ]
+  },
+  "ettin": {
+    "name": "Ettin",
+    "ac": "12",
+    "hp": "85",
+    "cr": "4",
+    "size": "large",
+    "type": "giant",
+    "actions": [
+      {
+        "type": "Melee weapon attack",
+        "name": "battleaxe",
+        "to hit": "+7",
+        "range/reach(ft)": "5",
+        "damage": [
+          {
+            "2d8+5": "slashing"
+          }
+        ]
+      },
+      {
+        "type": "Melee weapon attack",
+        "name": "morningstar",
+        "to hit": "+7",
+        "range/reach(ft)": "5",
+        "damage": [
+          {
+            "2d8+5": "piercing"
+          }
+        ]
+      }
+    ]
+  },
+  "flumph": {
+    "name": "Flumph",
+    "ac": "12",
+    "hp": "7",
+    "cr": "1/8",
+    "size": "small",
+    "type": "aberration",
+    "actions": [
+      {
+        "type": "Melee weapon attack",
+        "name": "tendrils",
+        "to hit": "+4",
+        "range/reach(ft)": "5",
+        "damage": [
+          {
+            "1d4+2": "piercing"
+          },
+          {
+            "1d4": "acid"
+          }
+        ]
+      }
+    ]
+  },
+  "fomorian": {
+    "ac": "14",
+    "hp": "149",
+    "cr": "8",
+    "size": "huge",
+    "type": "giant",
+    "actions": [
+      {
+        "type": "Melee weapon attack",
+        "name": "greatclub",
+        "to hit": "+9",
+        "range/reach(ft)": "15",
+        "damage": [
+          {
+            "3d8+6": "bludgeoning"
+          }
+        ]
+      }
+    ]
+  },
+  "gargoyle": {
+    "ac": "15",
+    "hp": "52",
+    "cr": "2",
+    "size": "medium",
+    "type": "elemental",
+    "actions": [
+      {
+        "type": "Melee weapon attack",
+        "name": "bite",
+        "to hit": "+4",
+        "range/reach(ft)": "5",
+        "damage": [
+          {
+            "1d6+2": "piercing"
+          }
+        ]
+      },
+      {
+        "type": "Melee weapon attack",
+        "name": "claws",
+        "to hit": "+4",
+        "range/reach(ft)": "5",
+        "damage": [
+          {
+            "1d6+2": "slashing"
+          }
+        ]
+      }
+    ]
+  },
+  "dao": {
+    "ac": "18",
+    "hp": "187",
+    "cr": "11",
+    "size": "large",
+    "type": "elemental",
+    "actions": [
+      {
+        "multiattack": "The dao makes two fist or two maul attacks"
+      },
+      {
+        "type": "Melee weapon attack",
+        "name": "fist",
+        "to hit": "+10",
+        "range/reach(ft)": "5",
+        "damage": [
+          {
+            "4d6+6": "bludgeoning"
+          }
+        ]
+      },
+      {
+        "type": "Melee weapon attack",
+        "name": "maul",
+        "to hit": "+10",
+        "range/reach(ft)": "5",
+        "damage": [
+          {
+            "4d6+6": "bludgeoning"
+          }
+        ]
+      }
+    ]
+  }
 }
