@@ -45,23 +45,8 @@ def view_manual(manual):
 
 def view_stat_block(index_number):
      dictionary = load_manual(manual)
-     i=0
-     for entry in dictionary:
-        if i == index_number:
-            name = entry["name"]
-            ac = entry["ac"]
-            hp = entry["hp"]
-            cr = entry["cr"]
-            print(f"""Current Stat Block: 
-                Name: {name} 
-                Armour Class: {ac} 
-                Hit Points: {hp}
-                Challenge Rating: {cr} 
-            \n""")
-            i=i+1
-        else:
-            pass
-            i=i+1
+     stat_block = dictionary[index_number]
+     print(stat_block)
 
 def select_creature_to_view():
     view_manual(manual)
