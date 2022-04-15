@@ -3,10 +3,22 @@ import json
 
 def start_menu():
     print("Welcome to the Monster Manual\n")
-    print("(1) View Creature List")
-    print("(2) View Creature")
-    print("(3) Add Creature")
-    print("(4) Exit")
+    start_options = ["View Creature List", "View Creature", "Add Creature", "Exit"]
+    for i, option in enumerate(start_options):
+        i=i+1
+        print(f"({i}) {option}")
+        i=i+1
+    chosen_option = input("\nEnter Number: ")
+    if chosen_option == "1":
+        view_creature_list()
+    elif chosen_option == "2":
+        view_creature()
+    elif chosen_option == "3":
+        add_creature()
+    elif chosen_option == "4":
+        quit()
+    else:
+        chosen_option
 
 def load_manual(file):
     with open(file, "r") as f:
@@ -174,7 +186,7 @@ def add_additional_stat(creature, stat):
         actions = []
         add_actions(creature, stat_category, actions)
 
-def more_stats_query(new_creature_key):
+def more_stats_query(creature_key):
     more_stats = input("Would you like to add more stats to this creature? Y/N: ")
     more_stats = str(more_stats).strip().lower()
     if more_stats == "y":
@@ -184,38 +196,31 @@ def more_stats_query(new_creature_key):
             print(f"({i}): {option}")
         stat_choice = input("Enter number: ")
         stat_choice = int(stat_choice) - 1
-        add_additional_stat(new_creature_key, stat_choice)
+        add_additional_stat(creature_key, stat_choice)
+    else:
+        start_menu()
 
 def add_creature():
     dictionary = load_manual(manual)
     new_creature_name = input("Enter new creature name: ")
     new_creature_key = new_creature_name.strip().lower()
     if new_creature_key in dictionary:
-        query_overwrite = input(f"{new_creature_key} already in monster manual, would you like to overwrite it? Y/N: ")
+        query_overwrite = input(f"{new_creature_key} already in monster manual, would you like to add further stats to it? Y/N: ")
         query_overwrite = query_overwrite.strip().lower()
-        if query_overwrite == "n":
+        if query_overwrite == "y":
+            creature_key = new_creature_key
+            more_stats_query(creature_key)
+        else:
             start_menu()
-    dictionary[new_creature_key] = {}
-    new_creature_name = new_creature_key.capitalize()
-    dictionary[new_creature_key]["name"] = new_creature_name
-    core_stats = ["ac", "hp", "cr", "size", "type"]
-    for stat in core_stats:
-        dictionary[new_creature_key][stat] = input(f"Enter {stat}: ")
-    update_manual(manual, dictionary)
-    more_stats_query(new_creature_key)
+    else:
+        dictionary[new_creature_key] = {}
+        new_creature_name = new_creature_key.capitalize()
+        dictionary[new_creature_key]["name"] = new_creature_name
+        core_stats = ["ac", "hp", "cr", "size", "type"]
+        for stat in core_stats:
+            dictionary[new_creature_key][stat] = input(f"Enter {stat}: ")
+        update_manual(manual, dictionary)
+        more_stats_query(new_creature_key)
 
 manual = "monsters.json"
-
-while True:
-    start_menu()
-    option = input("\nEnter Number: ")
-    if option == "1":
-        view_creature_list()
-    elif option == "2":
-        view_creature()
-    elif option == "3":
-        add_creature()
-    elif option == "4":
-        break
-    else:
-        option
+start_menu()

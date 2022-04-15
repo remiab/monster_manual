@@ -32,22 +32,114 @@
         ]
     },
     "purple worm": {
-        "name": "Purple Worm",
+        "name": "Purple worm",
         "ac": "18",
         "hp": "248",
-        "cr": "15"
+        "cr": "15",
+        "size": "gargantuan",
+        "type": "monstrosity",
+        "actions": [
+            {
+                "multiattack": "makes one bite attack and one stinger attack"
+            },
+            {
+                "type": "Melee weapon attack",
+                "name": "bite",
+                "to hit": "+9",
+                "range/reach(ft)": "10",
+                "damage": [
+                    {
+                        "3d8+9": "piercing"
+                    }
+                ],
+                "saving throw": {
+                    "DEX": "19"
+                },
+                "saving throw description": "Applies only to large or smaller creatures. On failure the target is swallowed. While swallowed it is blinded and restrained and takes 6d6 acid damage at the start of each of the worm's turns."
+            },
+            {
+                "type": "Melee weapon attack",
+                "name": "tail stinger",
+                "to hit": "+9",
+                "range/reach(ft)": "10",
+                "damage": [
+                    {
+                        "3d6+9": "piercing"
+                    }
+                ],
+                "saving throw": {
+                    "CON": "19"
+                },
+                "saving throw description": "target takes 12d6 poison damage (halved on successful save)"
+            }
+        ]
     },
     "skeleton": {
         "name": "Skeleton",
         "ac": "13",
-        "hp": "14",
-        "cr": "1/4"
+        "hp": "13",
+        "cr": "1/4",
+        "size": "medium",
+        "type": "undead",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "shortsword",
+                "to hit": "+4",
+                "range/reach(ft)": "5",
+                "damage": [
+                    {
+                        "1d6+2": "piercing"
+                    }
+                ]
+            },
+            {
+                "type": "Ranged weapon attack",
+                "name": "shortbow",
+                "to hit": "+4",
+                "range/reach(ft)": "80/320",
+                "damage": [
+                    {
+                        "1d6+2": "piercing"
+                    }
+                ]
+            }
+        ]
     },
     "mimic": {
         "name": "Mimic",
         "ac": "12",
         "hp": "58",
-        "cr": "3"
+        "cr": "2",
+        "size": "medium",
+        "type": "monstrosity",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "pseudopod",
+                "to hit": "+5",
+                "range/reach(ft)": "5",
+                "damage": [
+                    {
+                        "1d8+3": "bludgeoning"
+                    }
+                ]
+            },
+            {
+                "type": "Melee weapon attack",
+                "name": "bite",
+                "to hit": "+5",
+                "range/reach(ft)": "5",
+                "damage": [
+                    {
+                        "1d8+3": "piercing"
+                    },
+                    {
+                        "1d8": "acid"
+                    }
+                ]
+            }
+        ]
     },
     "basilisk": {
         "name": "Basilisk",
@@ -55,7 +147,23 @@
         "hp": "52",
         "cr": "3",
         "size": "medium",
-        "type": "monstrosity"
+        "type": "monstrosity",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "bite",
+                "to hit": "+5",
+                "range/reach(ft)": "5",
+                "damage": [
+                    {
+                        "2d6+3": "piercing"
+                    },
+                    {
+                        "2d6": "poison"
+                    }
+                ]
+            }
+        ]
     },
     "wolf": {
         "name": "Wolf",
@@ -63,7 +171,24 @@
         "hp": "11",
         "cr": "1/4",
         "size": "medium",
-        "type": "beast"
+        "type": "beast",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "bite",
+                "to hit": "+4",
+                "range/reach(ft)": "5",
+                "damage": [
+                    {
+                        "2d4+2": "piercing"
+                    }
+                ],
+                "saving throw": {
+                    "STR": "11"
+                },
+                "saving throw description": "be knocked prone"
+            }
+        ]
     },
     "aboleth": {
         "name": "Aboleth",
@@ -71,7 +196,38 @@
         "hp": "135",
         "cr": "10",
         "size": "large",
-        "type": "aberration"
+        "type": "aberration",
+        "actions": [
+            {
+                "multiattack": "makes 3 tentacle attacks"
+            },
+            {
+                "type": "Melee weapon attack",
+                "name": "tentacle",
+                "to hit": "+9",
+                "range/reach(ft)": "10",
+                "damage": [
+                    {
+                        "2d6+5": "bludgeoning"
+                    }
+                ],
+                "saving throw": {
+                    "CHA": "14"
+                },
+                "saving throw description": "becomes diseased. This disease has no effect for 1 min and can be removed by magic that cures disease. After 1 minute, the target's skin becomes translucent and slimy, the target hit points unless underwater. The disease can only be removed by heal or other disease curing spell of 6th level or higher. The target takes 1d12 acid damage every 10 minutes unless in water or moisture is applied to the skin every 10 minutes."
+            },
+            {
+                "type": "Melee weapon attack",
+                "name": "tail",
+                "to hit": "+9",
+                "range/reach(ft)": "10",
+                "damage": [
+                    {
+                        "3d6+5": "bludgeoning"
+                    }
+                ]
+            }
+        ]
     },
     "rug of smothering": {
         "name": "Rug of smothering",
@@ -79,7 +235,23 @@
         "hp": "33",
         "cr": "2",
         "size": "large",
-        "type": "construct"
+        "type": "construct",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "smother",
+                "to hit": "+5",
+                "range/reach(ft)": "5",
+                "damage": [
+                    {
+                        "grappled, escape DC 13": "target is restrained and blinded, takes damage at start of each of the target's turns"
+                    },
+                    {
+                        "2d6+3": "bludgeoning"
+                    }
+                ]
+            }
+        ]
     },
     "worg": {
         "name": "Worg",
