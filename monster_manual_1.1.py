@@ -153,7 +153,6 @@ def add_other_action(actions, action):
 
 def add_actions(creature, stat, actions):
     dictionary = load_manual(manual)
-    dictionary[creature][stat] = {}
     action = {}
     attack_types = ["Melee weapon attack", "Ranged weapon attack", "Melee spell attack", "Ranged spell attack", "N/A"]
     for i, type in enumerate(attack_types):
@@ -183,7 +182,14 @@ def add_additional_stat(creature, stat):
     stat_categories = ["actions", "speed", "stat_block", "damage v/r", "senses", "special feature", "other"]
     stat_category = stat_categories[stat]
     if stat == 0:
-        actions = []
+        dictionary = load_manual(manual)
+        creature_search = dictionary.get(creature)
+        key_list = creature_search.keys()
+        if stat_category in key_list:
+            actions = dictionary[creature][stat_category]
+        else:
+            actions = []
+            dictionary[creature][stat] = {}
         add_actions(creature, stat_category, actions)
 
 def more_stats_query(creature_key):

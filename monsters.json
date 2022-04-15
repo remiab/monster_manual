@@ -214,7 +214,7 @@
                 "saving throw": {
                     "CHA": "14"
                 },
-                "saving throw description": "becomes diseased. This disease has no effect for 1 min and can be removed by magic that cures disease. After 1 minute, the target's skin becomes translucent and slimy, the target hit points unless underwater. The disease can only be removed by heal or other disease curing spell of 6th level or higher. The target takes 1d12 acid damage every 10 minutes unless in water or moisture is applied to the skin every 10 minutes."
+                "saving throw description": "target becomes diseased. This disease has no effect for 1 min and can be removed by magic that cures disease. After 1 minute, the target's skin becomes translucent and slimy, the target hit points unless underwater. The disease can only be removed by heal or other disease curing spell of 6th level or higher. The target takes 1d12 acid damage every 10 minutes unless in water or moisture is applied to the skin every 10 minutes."
             },
             {
                 "type": "Melee weapon attack",
@@ -860,6 +860,38 @@
                     "CON": "10"
                 },
                 "saving throw description": "target becomes infected with disease described in Death Burst"
+            }
+        ]
+    },
+    "bandit": {
+        "name": "Bandit",
+        "ac": "12",
+        "hp": "11",
+        "cr": "1/8",
+        "size": "medium",
+        "type": "humanoid",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "scimitar",
+                "to hit": "+3",
+                "range/reach(ft)": "5",
+                "damage": [
+                    {
+                        "1d6+1": "slashing"
+                    }
+                ]
+            },
+            {
+                "type": "Ranged weapon attack",
+                "name": "light crossbow",
+                "to hit": "+3",
+                "range/reach(ft)": "80/320",
+                "damage": [
+                    {
+                        "1d8+1": "piercing"
+                    }
+                ]
             }
         ]
     }
