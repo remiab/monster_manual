@@ -55,6 +55,23 @@ def add_damage(actions, action, aspect, damage):
     if additional_damage_type == "y":
         add_damage(actions, action, aspect, damage)
     else:
+        weapon_atk_st = input("Does this attack require the target to make a saving throw to avoid further damage/condition? Y/N: ")
+        weapon_atk_st = weapon_atk_st.strip().lower()
+        if weapon_atk_st == "y":
+            saving_throw_skill = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+            for s, skill in enumerate(saving_throw_skill):
+                s = s + 1
+                print(f"({s}): {skill}")
+                s = s + 1
+            entered_skill = input("Enter number: ")
+            entered_skill = int(entered_skill) - 1
+            entered_skill = saving_throw_skill[entered_skill]
+            throw_dc = input("Enter throw DC: ")
+            effect_description = input("Enter effect description on failed save: ")
+            action["saving throw"] = {entered_skill: throw_dc}
+            action["saving throw description"] = effect_description
+        else:
+            pass
         actions.append(action)
 
 def add_weapon_attack(actions, action):
@@ -150,21 +167,18 @@ def add_actions(creature, stat, actions):
     else:
         more_stats_query(creature)
 
-def action_count(creature, stat):
-    actions = []
-    add_actions(creature, stat, actions)
-
 def add_additional_stat(creature, stat):
-    stat_categories = ["actions", "damage v/r", "senses", "special feature", "other"]
+    stat_categories = ["actions", "speed", "stat_block", "damage v/r", "senses", "special feature", "other"]
     stat_category = stat_categories[stat]
     if stat == 0:
-        action_count(creature, stat_category)
+        actions = []
+        add_actions(creature, stat_category, actions)
 
 def more_stats_query(new_creature_key):
     more_stats = input("Would you like to add more stats to this creature? Y/N: ")
     more_stats = str(more_stats).strip().lower()
     if more_stats == "y":
-        new_stat_options = ["Action", "Damage Vulnerabilities/Resistances", "Senses", "Special feature", "Other"]
+        new_stat_options = ["Action", "Speed", "Ability Scores and Modifiers", "Damage Vulnerabilities/Resistances", "Senses", "Special feature", "Other"]
         for i, option in enumerate(new_stat_options):
             i=i+1
             print(f"({i}): {option}")
@@ -176,6 +190,11 @@ def add_creature():
     dictionary = load_manual(manual)
     new_creature_name = input("Enter new creature name: ")
     new_creature_key = new_creature_name.strip().lower()
+    if new_creature_key in dictionary:
+        query_overwrite = input(f"{new_creature_key} already in monster manual, would you like to overwrite it? Y/N: ")
+        query_overwrite = query_overwrite.strip().lower()
+        if query_overwrite == "n":
+            start_menu()
     dictionary[new_creature_key] = {}
     new_creature_name = new_creature_key.capitalize()
     dictionary[new_creature_key]["name"] = new_creature_name
@@ -184,8 +203,6 @@ def add_creature():
         dictionary[new_creature_key][stat] = input(f"Enter {stat}: ")
     update_manual(manual, dictionary)
     more_stats_query(new_creature_key)
-    
-
 
 manual = "monsters.json"
 

@@ -2,9 +2,34 @@
     "kobold": {
         "name": "Kobold",
         "ac": "12",
-        "hp": "7",
+        "hp": "5",
         "cr": "1/8",
-        "size": "small"
+        "size": "small",
+        "type": "humanoid",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "dagger",
+                "to hit": "+4",
+                "range/reach(ft)": "5",
+                "damage": [
+                    {
+                        "1d4+2": "piercing"
+                    }
+                ]
+            },
+            {
+                "type": "Ranged weapon attack",
+                "name": "sling",
+                "to hit": "+4",
+                "range/reach(ft)": "30/120",
+                "damage": [
+                    {
+                        "1d4+2": "bludgeoning"
+                    }
+                ]
+            }
+        ]
     },
     "purple worm": {
         "name": "Purple Worm",
@@ -505,7 +530,7 @@
                 "range/reach(ft)": "15",
                 "damage": [
                     {
-                        "3d8+6 bludgeoning": "bludgeoning"
+                        "3d8+6": "bludgeoning"
                     }
                 ]
             },
@@ -638,6 +663,31 @@
             },
             {
                 "multiattack": "uses fire ray twice"
+            }
+        ]
+    },
+    "gas spore": {
+        "name": "Gas spore",
+        "ac": "5",
+        "hp": "1",
+        "cr": "1/2",
+        "size": "large",
+        "type": "plant",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "touch",
+                "to hit": "0",
+                "range/reach(ft)": "5",
+                "damage": [
+                    {
+                        "1": "poison"
+                    }
+                ],
+                "saving throw": {
+                    "CON": "10"
+                },
+                "saving throw description": "target becomes infected with disease described in Death Burst"
             }
         ]
     }
