@@ -29,7 +29,38 @@
                     }
                 ]
             }
-        ]
+        ],
+        "speed": [
+            {
+                "walk": "30"
+            }
+        ],
+        "stat_block": {
+            "stats": [
+                "STR",
+                "DEX",
+                "CON",
+                "INT",
+                "WIS",
+                "CHA"
+            ],
+            "ability_scores": [
+                7,
+                15,
+                9,
+                8,
+                7,
+                8
+            ],
+            "modifiers": [
+                -2,
+                2,
+                -1,
+                -1,
+                -2,
+                -1
+            ]
+        }
     },
     "purple worm": {
         "name": "Purple worm",

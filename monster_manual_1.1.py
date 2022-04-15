@@ -1,4 +1,4 @@
-from audioop import add
+import math
 import json
 
 def start_menu():
@@ -191,10 +191,25 @@ def add_speeds(creature, stat, speeds, speed):
         dictionary[creature][stat] = speeds
         update_manual(manual, dictionary)
         more_stats_query(creature)
-
+    
+def add_stat_block(creature, stat, scores, modifiers):
+    dictionary = load_manual(manual)
+    abilities = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
+    for ability in abilities:
+        ability_score = input(f"Enter {ability} score: ")
+        ability_score = int(ability_score)
+        scores.append(ability_score)
+    for score in scores:
+        modifier = math.floor(score/2 -5)
+        modifiers.append(modifier)
+    scores_and_modifiers = {"stats": abilities, "ability_scores": scores,
+    "modifiers": modifiers}
+    dictionary[creature][stat] = scores_and_modifiers
+    update_manual(manual, dictionary)
+    more_stats_query(creature)
 
 def add_additional_stat(creature, stat):
-    stat_categories = ["actions", "speed", "stat_block", "damage v/r", "senses", "special feature", "other"]
+    stat_categories = ["actions", "speed", "stat block", "damage v/r", "senses", "special feature", "other"]
     stat_category = stat_categories[stat]
     dictionary = load_manual(manual)
     creature_search = dictionary.get(creature)
@@ -206,7 +221,7 @@ def add_additional_stat(creature, stat):
             actions = []
             dictionary[creature][stat] = {}
         add_actions(creature, stat_category, actions)
-    if stat == 1:
+    elif stat == 1:
         speed = {}
         if stat_category in key_list:
             speeds = dictionary[creature][stat_category]
@@ -214,15 +229,18 @@ def add_additional_stat(creature, stat):
             speeds = []
             dictionary[creature][stat_category] = {}
         add_speeds(creature, stat_category, speeds, speed)
+    elif stat == 2:
+        scores = []
+        modifiers = []
+        dictionary[creature][stat_category] = {}
+        add_stat_block(creature, stat_category, scores, modifiers)
 
 def more_stats_query(creature_key):
     more_stats = input("Would you like to add more stats to this creature? Y/N: ")
     more_stats = str(more_stats).strip().lower()
     if more_stats == "y":
         new_stat_options = ["Action", "Speed", "Ability Scores and Modifiers", "Damage Vulnerabilities/Resistances", "Senses", "Special feature", "Other"]
-        for i, option in enumerate(new_stat_options):
-            i=i+1
-            print(f"({i}): {option}")
+        print_list(new_stat_options)
         stat_choice = input("Enter number: ")
         stat_choice = int(stat_choice) - 1
         add_additional_stat(creature_key, stat_choice)
