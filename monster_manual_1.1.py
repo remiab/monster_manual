@@ -20,6 +20,12 @@ def start_menu():
     else:
         chosen_option
 
+def print_list(list):
+    for i, type in enumerate(list):
+        i=i+1
+        print(f"({i}): {type}")
+        i=i+1
+
 def load_manual(file):
     with open(file, "r") as f:
         dictionary = json.load(f)
@@ -71,10 +77,7 @@ def add_damage(actions, action, aspect, damage):
         weapon_atk_st = weapon_atk_st.strip().lower()
         if weapon_atk_st == "y":
             saving_throw_skill = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
-            for s, skill in enumerate(saving_throw_skill):
-                s = s + 1
-                print(f"({s}): {skill}")
-                s = s + 1
+            print_list(saving_throw_skill)
             entered_skill = input("Enter number: ")
             entered_skill = int(entered_skill) - 1
             entered_skill = saving_throw_skill[entered_skill]
@@ -107,28 +110,20 @@ def add_spell_action(actions, action):
         for aspect in action_aspects:
             if aspect == "saving throw or attack roll":
                 st_atk = ["saving throw", "attack roll"]
-                for i, type in enumerate(st_atk):
-                    i=i+1
-                    print(f"({i}): {type}")
+                print_list(st_atk)
                 spell_type = input("Enter number: ")
                 spell_type = int(spell_type) - 1
                 if spell_type == 0:
                     saving_throw_skill = ["STR", "DEX", "CON", "INT", "WIS", "CHA"]
-                    for s, skill in enumerate(saving_throw_skill):
-                        s = s + 1
-                        print(f"({s}): {skill}")
-                        s = s + 1
+                    print_list(saving_throw_skill)
                     entered_skill = input("Enter number: ")
                     entered_skill = int(entered_skill) - 1
                     entered_skill = saving_throw_skill[entered_skill]
                     throw_dc = input("Enter throw DC: ")
                     damage_reduction_options = ["halved", "no damage"]
                     action["saving throw"] = {entered_skill: throw_dc}
-                    for d, option in enumerate(damage_reduction_options):
-                        d = d + 1
-                        print(f"({d}): {option}")
-                        d = d + 1
-                        damage_reduction = input("Enter number: ")
+                    print_list(damage_reduction)
+                    damage_reduction = input("Enter number: ")
                     damage_reduction = int(damage_reduction) - 1
                     action["damage on successful saving throw"] = damage_reduction_options[damage_reduction]
                 elif spell_type == 1:
@@ -155,10 +150,7 @@ def add_actions(creature, stat, actions):
     dictionary = load_manual(manual)
     action = {}
     attack_types = ["Melee weapon attack", "Ranged weapon attack", "Melee spell attack", "Ranged spell attack", "N/A"]
-    for i, type in enumerate(attack_types):
-        i=i+1
-        print(f"({i}): {type}")
-        i=i+1
+    print_list(attack_types)
     attack_type = input("Enter number: ")
     attack_type = int(attack_type) - 1
     if attack_type < 2:
@@ -178,19 +170,50 @@ def add_actions(creature, stat, actions):
     else:
         more_stats_query(creature)
 
+def add_speeds(creature, stat, speeds, speed):
+    dictionary = load_manual(manual)
+    speed_types = ["walk", "swim", "fly", "hover", "burrow", "climb"]
+    print_list(speed_types)
+    chosen_type = input("Enter number: ")
+    chosen_type = int(chosen_type) - 1
+    chosen_type = speed_types[chosen_type]
+    print(chosen_type)
+    speed_value = input("Enter speed(ft): ")
+    speed[chosen_type] = speed_value
+    print(speed)
+    add_another_speed = input("Add another speed type? Y/N: ")
+    add_another_speed = add_another_speed.strip().lower()
+    if add_another_speed == "y":
+        add_speeds(creature, stat, speeds, speed)
+    else:
+        speeds.append(speed)
+        print(speeds)
+        dictionary[creature][stat] = speeds
+        update_manual(manual, dictionary)
+        more_stats_query(creature)
+
+
 def add_additional_stat(creature, stat):
     stat_categories = ["actions", "speed", "stat_block", "damage v/r", "senses", "special feature", "other"]
     stat_category = stat_categories[stat]
+    dictionary = load_manual(manual)
+    creature_search = dictionary.get(creature)
+    key_list = creature_search.keys()
     if stat == 0:
-        dictionary = load_manual(manual)
-        creature_search = dictionary.get(creature)
-        key_list = creature_search.keys()
         if stat_category in key_list:
             actions = dictionary[creature][stat_category]
         else:
             actions = []
             dictionary[creature][stat] = {}
         add_actions(creature, stat_category, actions)
+    if stat == 1:
+        speed = {}
+        if stat_category in key_list:
+            speeds = dictionary[creature][stat_category]
+        else:
+            speeds = []
+            dictionary[creature][stat_category] = {}
+        add_speeds(creature, stat_category, speeds, speed)
 
 def more_stats_query(creature_key):
     more_stats = input("Would you like to add more stats to this creature? Y/N: ")

@@ -354,7 +354,26 @@
         "hp": "94",
         "cr": "5",
         "size": "large",
-        "type": "monstrosity"
+        "type": "monstrosity",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "bite",
+                "to hit": "+7",
+                "range/reach(ft)": "5",
+                "damage": [
+                    {
+                        "4d12+4": "piercing"
+                    }
+                ]
+            }
+        ],
+        "speed": [
+            {
+                "walk": "40",
+                "burrow": "40"
+            }
+        ]
     },
     "bullywug": {
         "name": "Bullywug",
