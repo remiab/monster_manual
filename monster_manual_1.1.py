@@ -38,11 +38,9 @@ def update_manual(file_name, update):
 def view_creature_list():
     dictionary = load_manual(manual)
     names = dictionary.keys()
-    i = 1
-    for creature in names:
-        creature = str(creature).capitalize()
-        print(f"{i}: {creature}")
-        i=i+1
+    print_list(names)
+    start_menu()
+    
 
 def retrieve_stat(creature, key):
     key_name = str(key).upper()
@@ -221,7 +219,7 @@ def add_vri(option, vri_type, dmg_cond_list, selected_conditions):
 def add_resistances(creature, stat, option, vri_list):
     dictionary = load_manual(manual)
     options = ["Damage vulnerability", "Damage resistance", "Damage immunity", "Condition immunity"]
-    conditions = ["blinded", "charmed", "deafened", "grappled", "incapacitated", "invisible", "paralysed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious", "exhaustion"]
+    conditions = ["blinded", "charmed", "deafened", "frightened", "grappled", "incapacitated", "invisible", "paralysed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious", "exhaustion"]
     damage_types = ["acid", "cold", "fire", "force", "lightning", "necrotic", "poison", "psychic", "radiant", "bludgeoning", "slashing", "piercing", "non-magical bludgeoning, piercing, slashing"]
     print_list(options)
     chosen_option = int(input("Enter number: ")) -1
@@ -274,7 +272,7 @@ def add_additional_stat(creature, stat):
     elif stat == 3:
         if stat_category in key_list:
             option = dictionary[creature][stat_category]
-            stat_search = dictionary.get(creature).get(stat)
+            stat_search = dictionary.get(creature).get(stat_category)
             vri_list = stat_search.keys()
         else:
             option = {}

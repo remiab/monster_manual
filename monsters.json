@@ -1,5 +1,5 @@
 {
-    "`kobold`": {
+    "kobold": {
         "name": "Kobold",
         "ac": "12",
         "hp": "5",
@@ -103,7 +103,39 @@
                 },
                 "saving throw description": "target takes 12d6 poison damage (halved on successful save)"
             }
-        ]
+        ],
+        "speed": [
+            {
+                "walk": "50",
+                "burrow": "30"
+            }
+        ],
+        "stat block": {
+            "stats": [
+                "STR",
+                "DEX",
+                "CON",
+                "INT",
+                "WIS",
+                "CHA"
+            ],
+            "ability_scores": [
+                28,
+                7,
+                22,
+                1,
+                8,
+                4
+            ],
+            "modifiers": [
+                9,
+                -2,
+                6,
+                -5,
+                -1,
+                -3
+            ]
+        }
     },
     "skeleton": {
         "name": "Skeleton",
@@ -135,7 +167,47 @@
                     }
                 ]
             }
-        ]
+        ],
+        "speed": [
+            {
+                "walk": "30"
+            }
+        ],
+        "stat block": {
+            "stats": [
+                "STR",
+                "DEX",
+                "CON",
+                "INT",
+                "WIS",
+                "CHA"
+            ],
+            "ability_scores": [
+                10,
+                14,
+                15,
+                6,
+                8,
+                5
+            ],
+            "modifiers": [
+                0,
+                2,
+                2,
+                -2,
+                -1,
+                -3
+            ]
+        },
+        "damage v/r": {
+            "Damage immunity": [
+                "poison"
+            ],
+            "Condition immunity": [
+                "exhaustion",
+                "poisoned"
+            ]
+        }
     },
     "mimic": {
         "name": "Mimic",
@@ -170,7 +242,46 @@
                     }
                 ]
             }
-        ]
+        ],
+        "speed": [
+            {
+                "walk": "15"
+            }
+        ],
+        "stat block": {
+            "stats": [
+                "STR",
+                "DEX",
+                "CON",
+                "INT",
+                "WIS",
+                "CHA"
+            ],
+            "ability_scores": [
+                17,
+                12,
+                15,
+                5,
+                13,
+                8
+            ],
+            "modifiers": [
+                3,
+                1,
+                2,
+                -3,
+                1,
+                -1
+            ]
+        },
+        "damage v/r": {
+            "Damage immunity": [
+                "acid"
+            ],
+            "Condition immunity": [
+                "prone"
+            ]
+        }
     },
     "basilisk": {
         "name": "Basilisk",
@@ -194,7 +305,38 @@
                     }
                 ]
             }
-        ]
+        ],
+        "speed": [
+            {
+                "walk": "20"
+            }
+        ],
+        "stat block": {
+            "stats": [
+                "STR",
+                "DEX",
+                "CON",
+                "INT",
+                "WIS",
+                "CHA"
+            ],
+            "ability_scores": [
+                16,
+                8,
+                15,
+                2,
+                8,
+                7
+            ],
+            "modifiers": [
+                3,
+                -1,
+                2,
+                -4,
+                -1,
+                -2
+            ]
+        }
     },
     "wolf": {
         "name": "Wolf",
@@ -219,7 +361,38 @@
                 },
                 "saving throw description": "be knocked prone"
             }
-        ]
+        ],
+        "speed": [
+            {
+                "walk": "40"
+            }
+        ],
+        "stat block": {
+            "stats": [
+                "STR",
+                "DEX",
+                "CON",
+                "INT",
+                "WIS",
+                "CHA"
+            ],
+            "ability_scores": [
+                12,
+                15,
+                12,
+                3,
+                12,
+                6
+            ],
+            "modifiers": [
+                1,
+                2,
+                1,
+                -4,
+                1,
+                -2
+            ]
+        }
     },
     "aboleth": {
         "name": "Aboleth",
@@ -258,7 +431,39 @@
                     }
                 ]
             }
-        ]
+        ],
+        "speed": [
+            {
+                "walk": "10",
+                "swim": "40"
+            }
+        ],
+        "stat block": {
+            "stats": [
+                "STR",
+                "DEX",
+                "CON",
+                "INT",
+                "WIS",
+                "CHA"
+            ],
+            "ability_scores": [
+                21,
+                9,
+                15,
+                18,
+                15,
+                18
+            ],
+            "modifiers": [
+                5,
+                -1,
+                2,
+                4,
+                2,
+                4
+            ]
+        }
     },
     "rug of smothering": {
         "name": "Rug of smothering",
@@ -282,7 +487,52 @@
                     }
                 ]
             }
-        ]
+        ],
+        "speed": [
+            {
+                "walk": "10"
+            }
+        ],
+        "stat block": {
+            "stats": [
+                "STR",
+                "DEX",
+                "CON",
+                "INT",
+                "WIS",
+                "CHA"
+            ],
+            "ability_scores": [
+                17,
+                14,
+                10,
+                1,
+                3,
+                1
+            ],
+            "modifiers": [
+                3,
+                2,
+                0,
+                -5,
+                -4,
+                -5
+            ]
+        },
+        "damage v/r": {
+            "Damage immunity": [
+                "poison",
+                "psychic"
+            ],
+            "Condition immunity": [
+                "paralysed",
+                "blinded",
+                "charmed",
+                "deafened",
+                "poisoned",
+                "frightened"
+            ]
+        }
     },
     "worg": {
         "name": "Worg",
