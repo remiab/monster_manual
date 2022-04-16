@@ -174,10 +174,8 @@ def add_speeds(creature, stat, speeds, speed):
     dictionary = load_manual(manual)
     speed_types = ["walk", "swim", "fly", "hover", "burrow", "climb"]
     print_list(speed_types)
-    chosen_type = input("Enter number: ")
-    chosen_type = int(chosen_type) - 1
+    chosen_type = int(input("Enter number: ")) -1
     chosen_type = speed_types[chosen_type]
-    print(chosen_type)
     speed_value = input("Enter speed(ft): ")
     speed[chosen_type] = speed_value
     print(speed)
@@ -208,6 +206,68 @@ def add_stat_block(creature, stat, scores, modifiers):
     update_manual(manual, dictionary)
     more_stats_query(creature)
 
+def add_damage_mods(option, vri_type, selected_damage_types):
+    damage_types = ["acid", "cold", "fire", "force", "lightning", "necrotic", "poison", "psychic", "radiant", "bludgeoning", "slashing", "piercing", "non-magical bludgeoning, piercing, slashing"]
+    print_list(damage_types)
+    damage_type = int(input("Enter number: ")) -1
+    damage_type = damage_types[damage_type]
+    selected_damage_types.append(damage_type)
+    option[vri_type] = selected_damage_types
+    add_more_damage_types = input(f"Would you like to add more damage types for {vri_type}? Y/N: ")
+    add_more_damage_types = add_more_damage_types.strip().lower
+    if add_more_damage_types == "y":
+        add_damage_mods(option, vri_type, selected_damage_types)
+    else: 
+        pass
+
+def add_condition_immunities(option, vri_type, selected_conditions):
+    conditions = ["blinded", "charmed", "deafened", "grappled", "incapacitated", "invisible", "paralysed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious", "exhaustion"]
+    print_list(conditions)
+    condition = int(input("Enter Number: ")) -1
+    condition = conditions[condition]
+    selected_conditions.append(condition)
+    option[vri_type] = selected_conditions
+    add_more_conditions = input("Would you like to add more condition immunities? Y/N: ")
+    add_more_conditions = add_more_conditions.strip().lower()
+    if add_more_conditions == "y":
+        add_condition_immunities(option, vri_type, selected_conditions)
+    else:
+        pass
+
+def add_resistances(creature, stat, option):
+    dictionary = load_manual(manual)
+    options = ["Damage vulnerability", "Damage resistance", "Damage immunity", "Condition immunity"]
+    print_list(options)
+    chosen_option = int(input("Enter number: ")) -1
+    vri_type = options[chosen_option]
+    stat_search = dictionary.get(creature).get(stat)
+    print(stat_search)
+    key_list = stat_search.keys()
+    if vri_type in key_list:
+        selected_damage_types = dictionary[creature][stat][vri_type]
+        selected_conditions = dictionary[creature][stat][vri_type]
+    else: 
+        selected_damage_types = []
+        selected_conditions = []
+    if chosen_option < 3:
+        selected_damage_types = []
+        add_damage_mods(option, vri_type, selected_damage_types)
+    elif chosen_option == 3:
+        selected_conditions = []
+        add_condition_immunities(option, vri_type, selected_conditions)
+    else:
+        quit()
+    add_another_vri = input("Add another resistance/immunity? Y/N: ")
+    add_another_vri = add_another_vri.strip().lower()
+    if add_another_vri == "y":
+        add_resistances(creature, stat, option)
+    else:
+        dictionary[creature][stat] = option
+        update_manual(manual, dictionary)
+        more_stats_query(creature)
+
+
+
 def add_additional_stat(creature, stat):
     stat_categories = ["actions", "speed", "stat block", "damage v/r", "senses", "special feature", "other"]
     stat_category = stat_categories[stat]
@@ -234,6 +294,13 @@ def add_additional_stat(creature, stat):
         modifiers = []
         dictionary[creature][stat_category] = {}
         add_stat_block(creature, stat_category, scores, modifiers)
+    elif stat == 3:
+        if stat_category in key_list:
+            option = dictionary[creature][stat_category]
+        else:
+            option = {}
+            dictionary[creature][stat_category] = {}
+        add_resistances(creature, stat_category, option)
 
 def more_stats_query(creature_key):
     more_stats = input("Would you like to add more stats to this creature? Y/N: ")

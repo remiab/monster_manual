@@ -1,5 +1,5 @@
 {
-    "kobold": {
+    "`kobold`": {
         "name": "Kobold",
         "ac": "12",
         "hp": "5",
@@ -944,5 +944,68 @@
                 ]
             }
         ]
+    },
+    "bone naga": {
+        "name": "Bone naga",
+        "ac": "15",
+        "hp": "58",
+        "cr": "4",
+        "size": "large",
+        "type": "undead",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "bite",
+                "to hit": "+5",
+                "range/reach(ft)": "10",
+                "damage": [
+                    {
+                        "2d6+3": "piercing"
+                    },
+                    {
+                        "3d6": "poison"
+                    }
+                ]
+            }
+        ],
+        "speed": [
+            {
+                "walk": "30"
+            }
+        ],
+        "stat block": {
+            "stats": [
+                "STR",
+                "DEX",
+                "CON",
+                "INT",
+                "WIS",
+                "CHA"
+            ],
+            "ability_scores": [
+                15,
+                16,
+                12,
+                15,
+                15,
+                16
+            ],
+            "modifiers": [
+                2,
+                3,
+                1,
+                2,
+                2,
+                3
+            ]
+        },
+        "damage v/r": {
+            "Damage immunity": [
+                "poison"
+            ],
+            "Condition immunity": [
+                "charmed"
+            ]
+        }
     }
 }
