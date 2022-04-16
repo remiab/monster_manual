@@ -297,13 +297,7 @@ def add_creature():
     new_creature_name = input("Enter new creature name: ")
     new_creature_key = new_creature_name.strip().lower()
     if new_creature_key in dictionary:
-        query_overwrite = input(f"{new_creature_key} already in monster manual, would you like to add further stats to it? Y/N: ")
-        query_overwrite = query_overwrite.strip().lower()
-        if query_overwrite == "y":
-            creature_key = new_creature_key
-            more_stats_query(creature_key)
-        else:
-            start_menu()
+        more_stats_query(new_creature_key)
     else:
         dictionary[new_creature_key] = {}
         new_creature_name = new_creature_key.capitalize()
