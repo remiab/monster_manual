@@ -1004,7 +1004,86 @@
                 "poison"
             ],
             "Condition immunity": [
-                "charmed"
+                "poisoned",
+                "charmed",
+                "exhaustion",
+                "paralysed"
+            ]
+        }
+    },
+    "guardian naga": {
+        "name": "Guardian naga",
+        "ac": "18",
+        "hp": "127",
+        "cr": "10",
+        "size": "large",
+        "type": "monstrosity",
+        "actions": [
+            {
+                "type": "Melee weapon attack",
+                "name": "bite",
+                "to hit": "+8",
+                "range/reach(ft)": "10",
+                "damage": [
+                    {
+                        "1d8+4": "piercing"
+                    }
+                ],
+                "saving throw": {
+                    "CON": "15"
+                },
+                "saving throw description": "10d8 poison damage, halved on success"
+            },
+            {
+                "type": "Ranged weapon attack",
+                "name": "spit poison",
+                "to hit": "+8",
+                "range/reach(ft)": "15/30",
+                "damage": [
+                    {
+                        "10d8": "poison"
+                    }
+                ]
+            }
+        ],
+        "damage v/r": {
+            "Damage immunity": [
+                "poison"
+            ],
+            "Condition immunity": [
+                "charmed",
+                "poisoned"
+            ]
+        },
+        "speed": [
+            {
+                "walk": "40"
+            }
+        ],
+        "stat block": {
+            "stats": [
+                "STR",
+                "DEX",
+                "CON",
+                "INT",
+                "WIS",
+                "CHA"
+            ],
+            "ability_scores": [
+                19,
+                18,
+                16,
+                16,
+                19,
+                18
+            ],
+            "modifiers": [
+                4,
+                4,
+                3,
+                3,
+                4,
+                4
             ]
         }
     }

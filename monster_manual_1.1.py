@@ -178,14 +178,12 @@ def add_speeds(creature, stat, speeds, speed):
     chosen_type = speed_types[chosen_type]
     speed_value = input("Enter speed(ft): ")
     speed[chosen_type] = speed_value
-    print(speed)
     add_another_speed = input("Add another speed type? Y/N: ")
     add_another_speed = add_another_speed.strip().lower()
     if add_another_speed == "y":
         add_speeds(creature, stat, speeds, speed)
     else:
         speeds.append(speed)
-        print(speeds)
         dictionary[creature][stat] = speeds
         update_manual(manual, dictionary)
         more_stats_query(creature)
@@ -206,67 +204,46 @@ def add_stat_block(creature, stat, scores, modifiers):
     update_manual(manual, dictionary)
     more_stats_query(creature)
 
-def add_damage_mods(option, vri_type, selected_damage_types):
-    damage_types = ["acid", "cold", "fire", "force", "lightning", "necrotic", "poison", "psychic", "radiant", "bludgeoning", "slashing", "piercing", "non-magical bludgeoning, piercing, slashing"]
-    print_list(damage_types)
-    damage_type = int(input("Enter number: ")) -1
-    damage_type = damage_types[damage_type]
-    selected_damage_types.append(damage_type)
-    option[vri_type] = selected_damage_types
-    add_more_damage_types = input(f"Would you like to add more damage types for {vri_type}? Y/N: ")
-    add_more_damage_types = add_more_damage_types.strip().lower
-    if add_more_damage_types == "y":
-        add_damage_mods(option, vri_type, selected_damage_types)
-    else: 
-        pass
-
-def add_condition_immunities(option, vri_type, selected_conditions):
-    conditions = ["blinded", "charmed", "deafened", "grappled", "incapacitated", "invisible", "paralysed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious", "exhaustion"]
-    print_list(conditions)
-    condition = int(input("Enter Number: ")) -1
-    condition = conditions[condition]
-    selected_conditions.append(condition)
+def add_vri(option, vri_type, dmg_cond_list, selected_conditions):
+    print_list(dmg_cond_list)
+    chosen_from_list = int(input("Enter Number: ")) -1
+    chosen_from_list = dmg_cond_list[chosen_from_list]
+    selected_conditions.append(chosen_from_list)
+    print(selected_conditions)
     option[vri_type] = selected_conditions
-    add_more_conditions = input("Would you like to add more condition immunities? Y/N: ")
-    add_more_conditions = add_more_conditions.strip().lower()
-    if add_more_conditions == "y":
-        add_condition_immunities(option, vri_type, selected_conditions)
+    add_more_vri = input(f"Would you like to add another {vri_type}? Y/N: ")
+    add_more_vri = add_more_vri.strip().lower()
+    if add_more_vri == "y":
+        add_vri(option, vri_type, dmg_cond_list, selected_conditions)
     else:
         pass
 
-def add_resistances(creature, stat, option):
+def add_resistances(creature, stat, option, vri_list):
     dictionary = load_manual(manual)
     options = ["Damage vulnerability", "Damage resistance", "Damage immunity", "Condition immunity"]
+    conditions = ["blinded", "charmed", "deafened", "grappled", "incapacitated", "invisible", "paralysed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious", "exhaustion"]
+    damage_types = ["acid", "cold", "fire", "force", "lightning", "necrotic", "poison", "psychic", "radiant", "bludgeoning", "slashing", "piercing", "non-magical bludgeoning, piercing, slashing"]
     print_list(options)
     chosen_option = int(input("Enter number: ")) -1
     vri_type = options[chosen_option]
-    stat_search = dictionary.get(creature).get(stat)
-    print(stat_search)
-    key_list = stat_search.keys()
-    if vri_type in key_list:
-        selected_damage_types = dictionary[creature][stat][vri_type]
-        selected_conditions = dictionary[creature][stat][vri_type]
+    if vri_type in vri_list:
+        selected_vri = dictionary[creature][stat][vri_type]
     else: 
-        selected_damage_types = []
-        selected_conditions = []
+        selected_vri = []
     if chosen_option < 3:
-        selected_damage_types = []
-        add_damage_mods(option, vri_type, selected_damage_types)
+        add_vri(option, vri_type, damage_types, selected_vri)
     elif chosen_option == 3:
-        selected_conditions = []
-        add_condition_immunities(option, vri_type, selected_conditions)
+        add_vri(option, vri_type, conditions, selected_vri)
     else:
         quit()
     add_another_vri = input("Add another resistance/immunity? Y/N: ")
     add_another_vri = add_another_vri.strip().lower()
     if add_another_vri == "y":
-        add_resistances(creature, stat, option)
+        add_resistances(creature, stat, option, vri_list)
     else:
         dictionary[creature][stat] = option
         update_manual(manual, dictionary)
         more_stats_query(creature)
-
-
 
 def add_additional_stat(creature, stat):
     stat_categories = ["actions", "speed", "stat block", "damage v/r", "senses", "special feature", "other"]
@@ -297,10 +274,13 @@ def add_additional_stat(creature, stat):
     elif stat == 3:
         if stat_category in key_list:
             option = dictionary[creature][stat_category]
+            stat_search = dictionary.get(creature).get(stat)
+            vri_list = stat_search.keys()
         else:
             option = {}
+            vri_list = [" "]
             dictionary[creature][stat_category] = {}
-        add_resistances(creature, stat_category, option)
+        add_resistances(creature, stat_category, option, vri_list)
 
 def more_stats_query(creature_key):
     more_stats = input("Would you like to add more stats to this creature? Y/N: ")
